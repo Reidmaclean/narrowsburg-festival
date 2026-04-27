@@ -328,7 +328,17 @@
 
 
     /* VENUE LIGHTBOX */
-    .venue-card.clickable { cursor: pointer; }
+    .venue-card.clickable { cursor: pointer; position: relative; }
+    .venue-card.clickable::after {
+      content: 'Tap to peek inside';
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.58rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+    }
     .venue-card.clickable:hover { background: #2d4d35; }
     #vlb {
       display: none;
@@ -586,7 +596,7 @@
     <p class="body-text" style="margin: 0 auto; text-align: center;">Different sounds deserve different rooms. Each stage has its own spirit.</p>
   </div>
   <div class="venue-grid">
-    <div class="venue-card reveal">
+    <div class="venue-card reveal clickable" data-img="photo-forest.jpg" data-caption="The Glen">
       <p class="venue-name">The Glen</p>
       <p class="venue-desc">Main stage in a wooded clearing. Where the big sounds happen under open sky.</p>
     </div>
@@ -598,7 +608,7 @@
       <p class="venue-name">The Crandall</p>
       <p class="venue-desc">Home of the Hootenanny sing-along. Everyone plays. Everyone sings.</p>
     </div>
-    <div class="venue-card reveal" style="transition-delay:0.3s">
+    <div class="venue-card reveal clickable" data-img="photo-barn.jpg" data-caption="Molly's Barn" style="transition-delay:0.3s">
       <p class="venue-name">Molly's Barn</p>
       <p class="venue-desc">Chamber sets and singer-songwriter hours, courtesy of our neighbor Molly.</p>
     </div>
