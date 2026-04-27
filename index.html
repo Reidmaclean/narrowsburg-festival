@@ -378,6 +378,29 @@
       letter-spacing: 0.1em;
     }
 
+
+    /* SOUND BUTTON */
+    #sound-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 100;
+      background: rgba(12, 30, 13, 0.75);
+      border: 1px solid rgba(176,141,71,0.4);
+      color: var(--cream-mid);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.5s;
+      backdrop-filter: blur(4px);
+    }
+    #sound-btn.visible { opacity: 1; }
+    #sound-btn:hover { border-color: var(--gold); color: var(--cream); }
+
     /* SWIPE GALLERY */
     #gallery {
       display: flex;
@@ -662,6 +685,9 @@
 <footer>
   <p>Narrowsburg Music Festival &nbsp;·&nbsp; July 22–26, 2025 &nbsp;·&nbsp; 1839 CR 23, Narrowsburg NY</p>
 </footer>
+
+<audio id="hero-audio" src="hero-music.mp3" preload="auto"></audio>
+<button id="sound-btn">♪ Play Music</button>
 
 <div id="vlb">
   <button id="vlb-close">×</button>
