@@ -379,27 +379,7 @@
     }
 
 
-    /* SOUND BUTTON */
-    #sound-btn {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 100;
-      background: rgba(12, 30, 13, 0.75);
-      border: 1px solid rgba(176,141,71,0.4);
-      color: var(--cream-mid);
-      font-family: 'Jost', sans-serif;
-      font-size: 0.62rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      padding: 0.6rem 1rem;
-      cursor: pointer;
-      opacity: 1;
-      transition: opacity 0.5s;
-      backdrop-filter: blur(4px);
-    }
-    #sound-btn.visible { opacity: 1; }
-    #sound-btn:hover { border-color: var(--gold); color: var(--cream); }
+
 
     /* SWIPE GALLERY */
     #gallery {
@@ -672,7 +652,7 @@
 <!-- CTA -->
 <section id="cta">
   <div class="reveal">
-    <h2 class="cta-heading">Don't forget your pic.</h2>
+    <h2 class="cta-heading">Let us know if you're in.</h2>
     <p class="cta-sub">Drop your email and we'll be in touch.</p>
     <div class="email-form">
       <input type="email" placeholder="your@email.com" />
@@ -685,9 +665,6 @@
 <footer>
   <p>Narrowsburg Music Festival &nbsp;·&nbsp; July 22–26, 2026 &nbsp;·&nbsp; 1839 CR 23, Narrowsburg NY</p>
 </footer>
-
-<audio id="hero-audio" src="hero-music.mp3" preload="auto"></audio>
-<button id="sound-btn">♪ Play Music</button>
 
 <div id="vlb">
   <button id="vlb-close">×</button>
@@ -721,31 +698,6 @@
       g.scrollLeft = scrollLeft - (e.pageX - g.offsetLeft - startX);
     });
   })();
-
-  // Hero audio
-  const audio = document.getElementById('hero-audio');
-  const soundBtn = document.getElementById('sound-btn');
-  if (audio && soundBtn) {
-    audio.volume = 0.8;
-    setTimeout(() => {
-      audio.play().then(() => {
-        soundBtn.textContent = '♪ Mute';
-        soundBtn.classList.add('visible');
-      }).catch(() => {
-        soundBtn.textContent = '♪ Play Music';
-        soundBtn.classList.add('visible');
-      });
-    }, 300);
-    soundBtn.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play();
-        soundBtn.textContent = '♪ Mute';
-      } else {
-        audio.pause();
-        soundBtn.textContent = '♪ Play Music';
-      }
-    });
-  }
 
   // Venue lightbox
   const vlb = document.getElementById('vlb');
