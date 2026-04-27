@@ -593,7 +593,7 @@
       <h2 class="section-heading">What you need to know.</h2>
       <div class="deet-row">
         <span class="deet-key">When</span>
-        <span class="deet-val"><strong>July 22 – 26, 2025</strong></span>
+        <span class="deet-val"><strong>July 22 – 26, 2026</strong></span>
       </div>
       <div class="deet-row">
         <span class="deet-key">Where</span>
@@ -683,7 +683,7 @@
 </section>
 
 <footer>
-  <p>Narrowsburg Music Festival &nbsp;·&nbsp; July 22–26, 2025 &nbsp;·&nbsp; 1839 CR 23, Narrowsburg NY</p>
+  <p>Narrowsburg Music Festival &nbsp;·&nbsp; July 22–26, 2026 &nbsp;·&nbsp; 1839 CR 23, Narrowsburg NY</p>
 </footer>
 
 <audio id="hero-audio" src="hero-music.mp3" preload="auto"></audio>
@@ -721,6 +721,48 @@
       g.scrollLeft = scrollLeft - (e.pageX - g.offsetLeft - startX);
     });
   })();
+
+  // Hero audio
+  const audio = document.getElementById('hero-audio');
+  const soundBtn = document.getElementById('sound-btn');
+  if (audio && soundBtn) {
+    audio.volume = 0.8;
+    setTimeout(() => {
+      audio.play().then(() => {
+        soundBtn.textContent = '♪ Mute';
+        soundBtn.classList.add('visible');
+      }).catch(() => {
+        soundBtn.textContent = '♪ Play Music';
+        soundBtn.classList.add('visible');
+      });
+    }, 300);
+    soundBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        soundBtn.textContent = '♪ Mute';
+      } else {
+        audio.pause();
+        soundBtn.textContent = '♪ Play Music';
+      }
+    });
+  }
+
+  // Venue lightbox
+  const vlb = document.getElementById('vlb');
+  const vlbImg = document.getElementById('vlb-img');
+  const vlbCap = document.getElementById('vlb-caption');
+  if (vlb) {
+    document.querySelectorAll('.venue-card.clickable').forEach(card => {
+      card.addEventListener('click', () => {
+        vlbImg.src = card.dataset.img;
+        vlbCap.textContent = card.dataset.caption;
+        vlb.classList.add('open');
+      });
+    });
+    document.getElementById('vlb-close').addEventListener('click', () => vlb.classList.remove('open'));
+    vlb.addEventListener('click', e => { if (e.target === vlb) vlb.classList.remove('open'); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') vlb.classList.remove('open'); });
+  }
 </script>
 
 </body>
