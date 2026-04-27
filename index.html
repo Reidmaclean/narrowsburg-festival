@@ -326,6 +326,48 @@
       color: var(--cream-mid);
     }
 
+
+    /* VENUE LIGHTBOX */
+    .venue-card.clickable { cursor: pointer; }
+    .venue-card.clickable:hover { background: #2d4d35; }
+    #vlb {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    #vlb.open { display: flex; }
+    #vlb img {
+      max-width: 90vw;
+      max-height: 82vh;
+      object-fit: contain;
+      border: 1px solid rgba(176,141,71,0.3);
+    }
+    #vlb-close {
+      position: absolute;
+      top: 1.5rem; right: 2rem;
+      font-size: 2rem;
+      color: var(--cream);
+      background: none;
+      border: none;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+    }
+    #vlb-close:hover { opacity: 1; }
+    #vlb-caption {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--cream-mid);
+      letter-spacing: 0.1em;
+    }
+
     /* SWIPE GALLERY */
     #gallery {
       display: flex;
@@ -548,12 +590,12 @@
       <p class="venue-name">The Glen</p>
       <p class="venue-desc">Main stage in a wooded clearing. Where the big sounds happen under open sky.</p>
     </div>
-    <div class="venue-card reveal" style="transition-delay:0.1s">
+    <div class="venue-card reveal clickable" data-img="photo-roscos.jpg" data-caption="Rosco's" style="transition-delay:0.1s">
       <p class="venue-name">Rosco's</p>
       <p class="venue-desc">The hidden basement venue. Intimate, electric, a little underground.</p>
     </div>
-    <div class="venue-card reveal" style="transition-delay:0.2s">
-      <p class="venue-name">The Cabin</p>
+    <div class="venue-card reveal clickable" data-img="photo-crandall.jpg" data-caption="The Crandall" style="transition-delay:0.2s">
+      <p class="venue-name">The Crandall</p>
       <p class="venue-desc">Home of the Hootenanny sing-along. Everyone plays. Everyone sings.</p>
     </div>
     <div class="venue-card reveal" style="transition-delay:0.3s">
@@ -565,6 +607,7 @@
 
 <!-- SWIPE GALLERY -->
 <div id="gallery">
+  <div class="g-slide"><img src="photo-lantern.jpg" alt="Sky lantern" /></div>
   <div class="g-slide"><img src="pm1.jpg" alt="On stage" /></div>
   <div class="g-slide"><img src="photo-forest.jpg" alt="The forest" /></div>
   <div class="g-slide"><img src="pm3.jpg" alt="Wine bar trio" /></div>
@@ -609,6 +652,12 @@
 <footer>
   <p>Narrowsburg Music Festival &nbsp;·&nbsp; July 22–26, 2025 &nbsp;·&nbsp; 1839 CR 23, Narrowsburg NY</p>
 </footer>
+
+<div id="vlb">
+  <button id="vlb-close">×</button>
+  <img id="vlb-img" src="" alt="" />
+  <p id="vlb-caption"></p>
+</div>
 
 <script>
   // ── Scroll reveal ──────────────────────────────────────────────
